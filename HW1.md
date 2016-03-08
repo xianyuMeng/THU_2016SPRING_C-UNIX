@@ -1,8 +1,8 @@
 Android and Linux
 --------------------
-*Android may be based on Linux, but it’s not based on the type of Linux system you may have used on your PC. You can’t run Android apps on typical Linux distributions and you can’t run the Linux programs you’re familiar with on Android.
+* Android may be based on Linux, but it’s not based on the type of Linux system you may have used on your PC. You can’t run Android apps on typical Linux distributions and you can’t run the Linux programs you’re familiar with on Android.
 
-*Linux makes up the core part of Android, but Google hasn’t added all the typical software and libraries you’d find on a Linux distribution like Ubuntu. This makes all the difference.
+* Linux makes up the core part of Android, but Google hasn’t added all the typical software and libraries you’d find on a Linux distribution like Ubuntu. This makes all the difference.
 
 | Android Version     |API Level  |Linux Kernel in AOSP |
 | :-----------------: | :-------: | :-----------------: |
