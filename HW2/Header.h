@@ -16,10 +16,9 @@ public:
 	WeightGame(int position, Status status);
 	~WeightGame() {};
 	static map<tuple<int, int, int>, pair<int, Status>> table;
-	static bool initialized;
+	//static bool initialized;
 	static void initialize_table() {
-		if (!initialized) {
-			initialized = 1;
+
 			table.insert(make_pair(make_tuple(-1, -1, 1), make_pair(1, heavy)));
 			table.insert(make_pair(make_tuple(1, 1, -1), make_pair(1, light)));
 			table.insert(make_pair(make_tuple(-1, 1, 1), make_pair(2, heavy)));
@@ -44,7 +43,6 @@ public:
 			table.insert(make_pair(make_tuple(0, 1, 0), make_pair(11, light)));
 			table.insert(make_pair(make_tuple(0, 0, 1), make_pair(12, heavy)));
 			table.insert(make_pair(make_tuple(0, 0, -1), make_pair(12, light)));
-		}
 	}
 	int pos_of_problem;
 private:

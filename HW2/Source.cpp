@@ -32,6 +32,7 @@ WeightGame::WeightGame(int position, Status status) :position(position), status(
 	right = ball[0] + ball[1] + ball[4] + ball[11];
 	this->third_round_result = (left == right) ? 0 : ((left > right) ? -1 : 1);
 	this->result = make_tuple(this->first_round_result, this->second_round_result, this->third_round_result);
+	//WeightGame::initialized = false;
 	WeightGame::initialize_table();
 	cout << "the diffeent ball is number " << (this->table[this->result]).first << "\n";
 	cout << "the different ball is " << (this->table[this->result]).second << "\n" << endl;
