@@ -1,6 +1,6 @@
 #include "Header.h"
 
-map<tuple<int, int, int>, pair<int, Status>> WeightGame::table;
+//map<tuple<int, int, int>, pair<int, Status>> WeightGame::table;
 
 WeightGame::WeightGame(int position, Status status) :position(position), status(status) {
 	const int number_of_balls = 12;

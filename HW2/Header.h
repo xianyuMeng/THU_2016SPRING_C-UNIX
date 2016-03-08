@@ -15,10 +15,9 @@ class WeightGame {
 public:
 	WeightGame(int position, Status status);
 	~WeightGame() {};
-	static map<tuple<int, int, int>, pair<int, Status>> table;
 	//static bool initialized;
-	static void initialize_table() {
-
+	void initialize_table() {
+			//initialized = 1;
 			table.insert(make_pair(make_tuple(-1, -1, 1), make_pair(1, heavy)));
 			table.insert(make_pair(make_tuple(1, 1, -1), make_pair(1, light)));
 			table.insert(make_pair(make_tuple(-1, 1, 1), make_pair(2, heavy)));
@@ -51,6 +50,7 @@ private:
 	tuple<int, int, int> result;
 	int first_round_result;
 	int second_round_result;
+	map<tuple<int, int, int>, pair<int, Status>> table;
 	int third_round_result;
 };
 
