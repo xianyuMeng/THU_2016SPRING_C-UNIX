@@ -6,7 +6,7 @@
 typedef struct Info{
 	char Surname[16];
 	char Firstname[16];
-	char Department[10];
+	char Department[2];
 	int ID;
 	int Age;
 }Info;
@@ -58,13 +58,13 @@ void printchar2bin(char* p, int cnt, FILE* ostream){
 	}
 }
 
-int main()
+int main(int argc, const char* argv[])
 {
-	FILE* fstream = fopen("test.csv", "r");
-	FILE* ostream = fopen("result.csv", "ab+");
+	FILE* fstream = fopen(argv[1], "r");
+	FILE* ostream = fopen(argv[2], "wb");
 	char line[1024];
 	char buf[1024];
-	int lines = countlines("test.csv");
+	int lines = countlines(argv[1]);
 	printf("the file contains %d lines!\n", lines);
 	struct Info *ptr;
 	ptr = malloc(sizeof(struct Info) * lines);
@@ -93,6 +93,7 @@ int main()
 		fprintf(ostream, "%u\n", htonl(ptr[i].ID));
 		printchar2bin(ptr[i].Firstname, sizeof(ptr[i].Firstname), ostream);
 		printchar2bin(ptr[i].Surname, sizeof(ptr[i].Surname), ostream);
+		printchar2bin(ptr[i].Department, sizeof(ptr[i].Department), ostream);
 		fprintf(ostream, "%u\n", htonl(ptr[i].Age));
 
 		++i;
