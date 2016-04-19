@@ -52,7 +52,7 @@ struct Info parse_line(char* line){
 	free(age);
 	return inv;
 }
-
+/*
 int countlines(char* filename){
 	// count the number of lines in the file called filename                                    
 	FILE *fp = fopen(filename,"r");
@@ -82,7 +82,7 @@ void printchar2bin(char* p, int cnt, FILE* ostream){
 		printbincharpad(p[i], ostream);
 	}
 }
-
+*/
 int main(int argc, const char** argv)
 {
 
@@ -104,8 +104,8 @@ int main(int argc, const char** argv)
 
 	//count lines of the input file	
 	char line[1024];
-	int lines = countlines(argv[1]);
-	printf("the file contains %d lines!\n", lines);
+	//int lines = countlines(argv[1]);
+	//printf("the file contains %d lines!\n", lines);
 	struct Info inv;
 	pid_t pid;
 
@@ -172,9 +172,11 @@ int main(int argc, const char** argv)
         		else if (write(ofd, &inv, sizeof(struct Info)) != sizeof(struct Info)) {
           			fprintf(stderr, "failed to write tmp file!");
         		}
+        		
         		if (unlink(pDirent -> d_name) != 0) {
           			fprintf(stderr, "failed to remove tmp file %s, %s\n", pDirent -> d_name, strerror(errno));
         		}
+        		
 			}
 		}
 	}
