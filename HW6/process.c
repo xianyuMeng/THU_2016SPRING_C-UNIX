@@ -86,6 +86,13 @@ void printchar2bin(char* p, int cnt, FILE* ostream){
 int main(int argc, const char** argv)
 {
 
+	//get current path
+	char cwd[1024];
+   	if (getcwd(cwd, sizeof(cwd)) != NULL)
+    	fprintf(stdout, "Current working dir: %s\n", cwd);
+   	else
+    	perror("getcwd() error");
+	
 	//open csv file
 	FILE* fstream = fopen(argv[1], "r");
 	if(fstream == NULL){
@@ -161,6 +168,12 @@ int main(int argc, const char** argv)
 		perror("failed to change directory!");
 		exit(EXIT_FAILURE);
 		}
+		/*
+		To enumerate directories on Unix, you can use opendir, readdir, and closedir. 
+		To remove you use rmdir() on an empty directory 
+		(i.e. at the end of your function, after deleting the children) 
+		and unlink() on a file. 
+		*/
 		while((pDirent = readdir(dir)) != NULL){
 			if(pDirent->d_type == DT_REG){
 				if ((fd = open(pDirent -> d_name, O_RDONLY)) < 0) {
@@ -172,17 +185,20 @@ int main(int argc, const char** argv)
         		else if (write(ofd, &inv, sizeof(struct Info)) != sizeof(struct Info)) {
           			fprintf(stderr, "failed to write tmp file!");
         		}
-        		
         		if (unlink(pDirent -> d_name) != 0) {
           			fprintf(stderr, "failed to remove tmp file %s, %s\n", pDirent -> d_name, strerror(errno));
-        		}
-        		
+        		}	
 			}
 		}
 	}
+	//remove temp directory
+	//we are now under the temp directory cd .. and then remove it
+	chdir(cwd);
+	if(rmdir(tempdir) < 0){
+		fprintf(stderr, "failed to remove the empty temp directory %s \n", strerror(errno));
+	}
 
 	close(ofd);
-
 	fclose(fstream);
 	return 0;
 }
